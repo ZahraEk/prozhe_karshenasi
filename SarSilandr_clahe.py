@@ -2,14 +2,14 @@ import cv2
 from matplotlib import pyplot as plt
 
 #khandane aks
-img = cv2.imread("images/IMG_0001_resize.jpg", 0)
+img = cv2.imread("images/IMG_2933_resize.jpg", 0)
 
 #sakhtane CLAHE
 clahe = cv2.createCLAHE(clipLimit=70.0, tileGridSize=(2,2))
 cl = clahe.apply(img)
 
 #save kardan tasvir hamsansazi shode
-clahe_img = cv2.imwrite('images/SilandrCl0001.jpg', cl)
+clahe_img = cv2.imwrite('images/SilandrCl2933.jpg', cl)
 
 #namayeshe tasavir va histogram an ha
 f, subplt = plt.subplots(2,2 , figsize=(16,10))

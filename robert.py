@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-from scipy import ndimage
 import matplotlib.pyplot as plt
 
 #khandane aks
@@ -17,15 +16,13 @@ array_v = np.array([[0,0,0],
                     [0,0,-1]])
 
 #convolve kardan maskha ba tasvir
-image = np.asarray(img, dtype="int32")
-horizental = ndimage.convolve(image, array_h)
-vertical = ndimage.convolve(image, array_v)
+horizental = cv2.filter2D(src=img, ddepth=-1, kernel=array_h)
+vertical = cv2.filter2D(src=img, ddepth=-1, kernel=array_v)
 
 #be dast avardn filter robert da rastaye ofoghi va amodi
-robert = np.sqrt(np.square(horizental)+np.square(vertical))
 robert_h = np.asarray(np.clip(horizental, 0, 255), dtype="uint8")
 robert_v = np.asarray(np.clip(vertical, 0, 255), dtype="uint8")
-roberts = np.asarray(np.clip(robert, 0, 255), dtype="uint8")
+roberts = robert_h + robert_v
 
 #save kardan khoroji
 robert_res = cv2.imwrite('images/robert_result.jpg', roberts)

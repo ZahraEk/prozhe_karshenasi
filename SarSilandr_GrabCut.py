@@ -3,7 +3,7 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 
 #khandane aks
-img = cv.imread("images/IMG_0001_resize.jpg")
+img = cv.imread("images/IMG_2933_resize.jpg")
 
 #ijad mask
 mask = np.zeros(img.shape[:2],np.uint8)
@@ -16,9 +16,9 @@ fgdModel = np.zeros((1,65),np.float64)
 #silandr 0010 : rect = (10,24,494,260)
 #silandr 0492 : rect = (3,20,545,300)
 #silandr 0082 : rect = (3,20,493,255)
-#silandr 2933 : rect = (3,3,505,450)
-#silandr 0001 :
-rect = (0,50,500,255)
+#silandr 0001 : rect = (0,50,500,255)
+#silandr 2933 :
+rect = (3,3,505,450)
 
 #emale grabcut
 cv.grabCut(img,mask,rect,bgdModel,fgdModel,2,cv.GC_INIT_WITH_RECT)
@@ -31,7 +31,7 @@ plt.imshow(img1)
 plt.show()
 
 #save kardan tasvir jodasazi shode(marhaleye aval)
-Siland_GrabCut1 = cv.imwrite('images/SilandrCut0001.jpg', img)
+Siland_GrabCut1 = cv.imwrite('images/SilandrCut2933.jpg', img)
 
 ##khandane maski ke tavasato khodeman ijad shode
 #newmask = cv.imread('images/mask.jpg',0)

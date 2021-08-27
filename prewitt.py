@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-from scipy import ndimage
 import matplotlib.pyplot as plt
 
 #khandane aks
@@ -17,15 +16,13 @@ array_v = np.array([[1,1,1],
                     [-1,-1,-1]])
 
 #convolve kardan maskha dar tasvir
-image = np.asarray(img, dtype="int32")
-horizental = ndimage.convolve(image, array_h)
-vertical = ndimage.convolve(image, array_v)
+horizental = cv2.filter2D(src=img, ddepth=-1, kernel=array_h)
+vertical = cv2.filter2D(src=img, ddepth=-1, kernel=array_v)
 
 #be dast avardn filter prewitt da rastaye ofoghi va amodi
-prewitt = np.sqrt(np.square(horizental)+np.square(vertical))
 prewitt_h = np.asarray(np.clip(horizental, 0, 255), dtype="uint8")
 prewitt_v = np.asarray(np.clip(vertical, 0, 255), dtype="uint8")
-prewitts = np.asarray(np.clip(prewitt, 0, 255), dtype="uint8")
+prewitts = prewitt_h + prewitt_v
 
 #save kardan khoroji
 prewitt_res = cv2.imwrite('images/prewitt_result.jpg', prewitts)

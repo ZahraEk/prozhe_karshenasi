@@ -18,7 +18,7 @@ def gammaCorrection(src, gamma):
     return cv2.LUT(src, table)
 
 #emale eslahe gamma bar roye tasvir
-correction_img = gammaCorrection(img, 2)
+correction_img = gammaCorrection(img, 0.5)
 
 #save kardan khoroji
 mask = cv2.imwrite('images/gamma_result.jpg', correction_img)

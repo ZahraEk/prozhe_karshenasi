@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 img = cv2.imread("images/lena.bmp",0)
 
 #emale filtere gaussian baraye kaheshe noise
-gaussian = cv2.GaussianBlur(img, (7,7), 0)
+gaussian = cv2.GaussianBlur(img, (3,3), 0)
 
 #emale filtere laplacian bar rooye tasvir hamvar sazi shode
-LoG = cv2.Laplacian(gaussian, cv2.CV_8U, ksize=5)
+LoG = cv2.Laplacian(gaussian, cv2.CV_8U, ksize=3)
 
 #save kardan khoroji
 LoG_res = cv2.imwrite('images/LoG_result.jpg', LoG)

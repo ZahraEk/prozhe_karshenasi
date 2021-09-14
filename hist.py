@@ -2,7 +2,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 #khandane aks
-org_img = cv2.imread('images/baboon.png')
+org_img = cv2.imread('images/baboon.png',0)
 img = cv2.cvtColor(org_img, cv2.COLOR_BGR2RGB)
 
 #namayeshe tasvir va histogram an
